@@ -8,6 +8,14 @@ utf8
 
 npm安装依赖包的时候一定要在项目根目录下 npm isntall 包名
 
+vscode 关闭eslint语法  编写代码时，eslint能自动矫正我们错误的写法
+在扩展里安装eslint
+文件>首选项>设置>setting.json
+"editor.codeActionsOnSave":{
+  "source.fixAll": ture
+}
+
+
 
 git管理vue项目每次提交代码的时候，是不会把node_module里的代码管理进去的
 所以git clone项目到本地后，要 npm install 加载下package.json里面的依赖包，下载到本地项目
