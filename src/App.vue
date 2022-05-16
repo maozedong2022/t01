@@ -12,9 +12,13 @@ import { allChannelListAPI } from '@/api'
 export default {
 
   async created () {
-    console.log(1)
-    const res = await allChannelListAPI()
-    console.log(res)
+    try {
+      console.log(1)
+      const res = await allChannelListAPI()
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
