@@ -6,6 +6,13 @@ import 'amfe-flexible' //适配移动端字体大小
 
 import {NavBar} from 'vant'
 
+import {Form, Field, Button } from 'vant'  //引入表单组件
+Vue.use(Form)
+Vue.use(Field)
+Vue.use(Button)
+
+
+
 Vue.use(NavBar)
 Vue.config.productionTip = false
 
@@ -50,3 +57,4 @@ new Vue({
 // 路由匹配, 跳转路径, 路由传参没写name参数名, 二级路由多个/, 一级路由不写/, children单词, path单词
 // 高端: 环境, 插件, 版本...
 // 弄一个全是bug的项目, 把所有bug放在这个项目里, 让大家练习解决bug
+
