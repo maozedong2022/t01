@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      tt2
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
       const res = await allChannelListAPI()
       console.log(res)
     } catch (error) {
-      console.log(error)
+      console.dir(error)
     }
   }
 }

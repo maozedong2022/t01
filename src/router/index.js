@@ -1,23 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Login from '@/views/Login' //引入login页面到路由
+
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/',  //页面打开时 根路径
+    redirect: '/login' //让根路径重定向到login
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      path: '/login',  //这里代表login路由
+      component: Login  //设置login路由转向 Login组件  记得把该组件挂在到App.vue里，<router-view></router-view>
   }
+
 ]
 
 const router = new VueRouter({
