@@ -49,9 +49,12 @@
 </template>
 
 <script>
+
+import {loginAPI} from '@/api'
+
+
 export default{
 
-     name: 'Login',
      data () {
        return {
          formLogin: {
@@ -61,9 +64,31 @@ export default{
        }
      },
      methods: {
-       onSubmit (v) {
-         console.log("vvv",v.formLogin);
-         console.log(v);
+       async onSubmit (v) {
+         console.log('v',v);
+         console.log('this',this.formLogin);
+              // 状态设置true
+          // this.isLoading = true
+          const res = await loginAPI(this.formLogin)
+          console.log('res',res)
+          // try {
+
+          //   Notify({ type: 'success', message: '登录成功啦!!!' })
+          //   setToken(res.data.data.token)
+          //   setStorage('refresh_token', res.data.data.refresh_token)
+          //   // 跳转一定要写在最后->尽量最后执行
+          //   // location.href -> 当前浏览器地址和要跳转的地址一样(不包含#后面锚点信息) -> 不会刷新网页
+          //   // 地址改变, 就会导致网页刷新
+          //   // this.$router.push() 压栈(会产生历史记录, 可以回退), this.$router.replace() 替换(不会产生历史记录)
+          //   this.$router.replace({
+          //     path: this.$route.query.path || '/layout/home' // 因为我们路由规则里/layout里没有重定向, 所以直接在这里写全
+          //   })
+          // } catch (err) {
+          //   // Promise内ajax抛出错误, 直接进入这里
+          //   Notify({ type: 'danger', message: '账号或密码错误' })
+          // }
+
+         
        }
      }
 

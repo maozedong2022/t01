@@ -15,7 +15,7 @@ export default {
     try {
       console.log(1)
       const res = await allChannelListAPI()
-      console.log(res)
+      // console.log(res)
     } catch (error) {
       console.dir(error)
     }
