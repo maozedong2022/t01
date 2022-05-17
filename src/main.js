@@ -6,13 +6,15 @@ import 'amfe-flexible' //适配移动端字体大小
 
 import {NavBar} from 'vant'
 
-import {Form, Field, Button,Tabbar,TabbarItem,Icon } from 'vant'  //引入表单组件
+import {Form, Field, Button,Tabbar,TabbarItem,Icon,Tab,Tabs } from 'vant'  //引入表单组件
 Vue.use(Form)
 Vue.use(Field)
 Vue.use(Button)
 Vue.use(Tabbar)
 Vue.use(TabbarItem)
 Vue.use(Icon)
+Vue.use(Tab)
+Vue.use(Tabs)
 
 
 
