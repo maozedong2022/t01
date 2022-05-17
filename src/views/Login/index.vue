@@ -40,7 +40,11 @@
               native-type代表原生button的type属性
               代表这个van-button组件渲染的原生button标签type是submit提交整个表单功能的按钮
             -->
-           <van-button block type="info" native-type="submit">登录</van-button>
+           <van-button block type="info" native-type="submit"
+          :disabled="isLoading"
+          :loading="isLoading"
+          loading-text="正在登录ing..."
+           >登录</van-button>
          </div>
        </van-form>
 
@@ -60,14 +64,15 @@ export default{
          formLogin: {
            mobile: '13888888888',
            code: '246810' // 默认只能用246810后台规定了
-         }
+         },
+         isLoading: false // 登录按钮-加载状态
        }
      },
      methods: {
        async onSubmit (v) {
          console.log('this',this.formLogin);
               // 状态设置true
-          // this.isLoading = true
+          this.isLoading = true
 
           try {
             const res = await loginAPI(this.formLogin)
@@ -87,7 +92,7 @@ export default{
             Notify({ type: 'danger', message: '账号或密码错误' })
           }
 
-         
+         this.isLoading = false // 网络请求完成无论成功/报错, 把状态关掉
        }
      }
 
