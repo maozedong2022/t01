@@ -54,6 +54,7 @@
 
 <script>
 
+import {setToken} from '@/utils/token.js'
 import {loginAPI} from '@/api'
 import { Notify } from 'vant';
 
@@ -78,7 +79,7 @@ export default{
             const res = await loginAPI(this.formLogin)
             console.log('res',res)
             Notify({ type: 'success', message: '登录成功啦!!!' })
-            // setToken(res.data.data.token)
+            setToken(res.data.data.token)
             // setStorage('refresh_token', res.data.data.refresh_token)
             // 跳转一定要写在最后->尽量最后执行
             // location.href -> 当前浏览器地址和要跳转的地址一样(不包含#后面锚点信息) -> 不会刷新网页
