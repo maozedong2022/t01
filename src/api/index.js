@@ -1,5 +1,7 @@
 import axios from '@/utils/request.js'
 import request from '@/utils/request.js'
+import {getToken} from '@/utils/token.js'
+
 
 // 获取主页数据, 只负责调用一个接口, 返回一个Promise对象
     export const allChannelListAPI = () => axios({
@@ -21,4 +23,14 @@ import request from '@/utils/request.js'
       }
     })
   }
+
+
+  // 频道 - 获取用户选择的频道
+// 注意: 用户没有登录, 默认返回后台设置的默认频道列表
+export const getUserChannelsAPI = () => request({
+  url: '/v1_0/user/channels',
+  headers:{
+    Authorization:`Bearer ${getToken()}`
+  }
+})
 

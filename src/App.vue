@@ -13,7 +13,6 @@ export default {
 
   async created () {
     try {
-      console.log(1)
       const res = await allChannelListAPI()
       // console.log(res)
     } catch (error) {

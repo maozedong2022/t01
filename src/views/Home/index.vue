@@ -28,10 +28,13 @@
             第一次切换到对应频道时, 才会创建下属的ArticleList组件->created方法
             第二次切换就是显示/隐藏切换 -->
             <van-tabs v-model="active" sticky animated offset-top="1.226667rem">
-                <van-tab title="标签 1">内容 1</van-tab>
-                <van-tab title="标签 2">内容 2</van-tab>
+                <van-tab v-for="obj in userChannelList"
+                :title="obj.name" :key="obj.id">
+                {{obj.name}}
+                </van-tab>
+                <!-- <van-tab title="标签 2">内容 2</van-tab>
                 <van-tab title="标签 3">内容 3</van-tab>
-                <van-tab title="标签 4">内容 4</van-tab>
+                <van-tab title="标签 4">内容 4</van-tab> -->
             </van-tabs>
         </div>
 
@@ -41,12 +44,18 @@
 </template>
 <script>
 import { Toast } from 'vant';
-
+import {getUserChannelsAPI} from '@/api'
 export default {
     data() {
         return {
-            active: 2,
+            active: 1, //tab导航页激活索引2
+            userChannelList:[]
         };
+    },
+    async created (){
+        const res = await getUserChannelsAPI();
+        console.log("list",res)
+        this.userChannelList = res.data.data.channels;
     },
     methods: {
         // onClickLeft() {
