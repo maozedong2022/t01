@@ -31,7 +31,7 @@
                 <van-tab v-for="obj in userChannelList"
                 :title="obj.name" :key="obj.id">
                 <!-- {{obj.name}} -->
-                <ArticleList></ArticleList>
+                <ArticleList :list="articlesList"></ArticleList>
                 </van-tab>
                 <!-- <van-tab title="标签 2">内容 2</van-tab>
                 <van-tab title="标签 3">内容 3</van-tab>
@@ -45,19 +45,26 @@
 </template>
 <script>
 import { Toast } from 'vant';
-import {getUserChannelsAPI} from '@/api'
+import {getUserChannelsAPI,articlesListAPI} from '@/api'
 import ArticleList from './component/ArticleList.vue'
 export default {
     data() {
         return {
             active: 0, //tab导航页激活索引2
-            userChannelList:[]
+            userChannelList:[], //频道列表
+            articlesList:[],//文章列表
         };
     },
     async created (){
+        //频道列表
         const res = await getUserChannelsAPI();
-        console.log("list",res)
+        // console.log("list",res)
         this.userChannelList = res.data.data.channels;
+
+        //文章列表
+        const res1 = await articlesListAPI({channel_id:0, timestamp:new Date().getTime()});
+        console.log('res1',res1)
+        this.articlesList = res1.data.data.results;
     },
     methods: {
         // onClickLeft() {
