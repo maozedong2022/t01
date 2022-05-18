@@ -30,7 +30,8 @@
             <van-tabs v-model="active" sticky animated offset-top="1.226667rem">
                 <van-tab v-for="obj in userChannelList"
                 :title="obj.name" :key="obj.id">
-                {{obj.name}}
+                <!-- {{obj.name}} -->
+                <ArticleList></ArticleList>
                 </van-tab>
                 <!-- <van-tab title="标签 2">内容 2</van-tab>
                 <van-tab title="标签 3">内容 3</van-tab>
@@ -45,10 +46,11 @@
 <script>
 import { Toast } from 'vant';
 import {getUserChannelsAPI} from '@/api'
+import ArticleList from './component/ArticleList.vue'
 export default {
     data() {
         return {
-            active: 1, //tab导航页激活索引2
+            active: 0, //tab导航页激活索引2
             userChannelList:[]
         };
     },
@@ -65,6 +67,9 @@ export default {
         //   Toast('按钮');
         // },
     },
+    components:{
+        ArticleList
+    }
 };
 </script>
 <style  scoped lang="less">
